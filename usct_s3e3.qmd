@@ -1,0 +1,179 @@
+---
+title: "Applying Data Science"
+subtitle: "<font size='7'>Season 3, Episode 3</font></br><font size='5'>May 21, 2024</font>"
+author: "<font size='6'>Athit Kao, PhD</font>"
+institute: "<font size='4'></font></br><font size='2'><em>DISCLAIMER: Opinions expressed within this presentation are solely the author's and do not reflect the opinions and beliefs of employer or its affiliates.</em></font></br><code><font size='4' color='#FF0000'>↙ Click ≡ for menu or use arrow keys (← & →) to navigate between slides</font></code>"
+footer: "[<font color='#C0C0C0' size=2'>Copyright © 2024—∞ Athit Kao, Terms and Conditions<img src='./usct_s3e2_files/img/link_external_c0c0c0.png' style='display: inline-block; margin: 0; margin-bottom: -1px; height: 10px;'/></img></font>](http://www.athitkao.com/tos.html)"
+format:
+  revealjs:
+    theme: solarized
+    background-image: "./usct_s3e3_files/img/madameberry_pub_domain_backgrounds/fragile-soft-machine_invert.jpg"
+    transition: none
+    slide-number: c/t
+    logo: ./usct_s3e3_files/img/usct.png
+include-in-header:
+  text: |
+    <link rel = "shortcut icon" type="image/png" href = "./usct_s3e3_files/img/usct.png" />
+editor: visual
+---
+
+# Introduction {visibility="hidden"}
+
+## Goals
+
+- High-level introduction to collaboration and scaling
+- Ensure a good start on web-based environment
+- Answering your questions
+
+## Goals {visibility="uncounted"}
+
+- High-level introduction to collaboration and scaling
+- Ensure a good start on web-based environment
+- Answering your questions
+
+</br>
+
+<h2>Prerequisites</h2>
+
+- No programming or R experience necessary
+- Familiarity with spreadsheet software (e.g., Excel)
+- Interest in automating decision-making processes
+
+## <code><font color='#586E75'>whoami</font></code>
+
+::: columns
+::: {.column width="40%"}
+![](./usct_s3e3_files/img/)
+:::
+
+::: {.column width="60%"}
+-   "Atet"
+-   R enthusiast
+-   R&D ► Production
+    -   Science (Bioinformatics)
+    -   Engineering (Data Science)
+    -   Business (Lead Investigator)
+:::
+:::
+
+## Agenda
+
+<font color='#C0C0C0'>• **S3E1**: Introduction to leveraging machine learning</br>
+‎ ‎ ‎ ‎ ▪ Relevant background & Hands-on experience</br>
+‎ ‎ ‎ ‎ ▪ 30,000 ft. view of a project</br>
+• **S3E2**: How to communicate your findings to stakeholders</br>
+‎ ‎ ‎ ‎ ▪ Visualization concepts & Hands-on experience</br>
+‎ ‎ ‎ ‎ ▪ Visual Data Analysis</font></br>
+• **S3E3**: Collaborating on and scaling your efforts</br>
+‎ ‎ ‎ ‎ ▪ Collaborative data science</br>
+‎ ‎ ‎ ‎ ▪ Scripts and web-based applications</br>
+‎ ‎ ‎ ‎ ▪ High-performance computing concepts</br>
+
+## Recap: Exploratory Data Analysis
+
+![](./usct_s3e3_files/img/eda_2.png)
+
+## Recap: Exploratory Data Analysis {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/eda_3.png)
+
+## Recap: Data Visualization Methods
+
+![](./usct_s3e3_files/img/format_and_workflow_3.png)
+
+## Recap: Development Environments
+
+::: columns
+::: {.column width="60%"}
+RStudio Desktop
+
+![](./usct_s3e3_files/img/tools_2.png)
+:::
+
+::: {.column width="40%"}
+:::
+:::
+
+## Recap: Development Environments{visibility="uncounted"}
+
+::: columns
+::: {.column width="60%"}
+RStudio Desktop
+
+![](./usct_s3e3_files/img/tools_2.png)
+:::
+
+::: {.column width="40%"}
+Web-Based R "*Light*"
+
+![](./usct_s3e3_files/img/web_r_6.gif)
+:::
+:::
+
+## Recap: Development Environments{visibility="uncounted"}
+
+::: columns
+::: {.column width="60%"}
+RStudio Desktop
+
+![](./usct_s3e3_files/img/tools_2.png)
+:::
+
+::: {.column width="40%"}
+Web-Based R "*Light*"
+
+![](./usct_s3e3_files/img/web_r_6.gif)
+:::
+:::
+
+*Too much to install right now...*‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ *No "local" features...*
+
+## Posit Cloud = RStudio Desktop in the Cloud
+
+![](./usct_s3e3_files/img/posit_cloud_1.png)
+
+## Sign Up At: <a href="https://posit.cloud/plans/free" target="_blank"><font color='#586E75'>https://posit.cloud/plans/free</font></a>
+
+![](./usct_s3e3_files/img/posit_cloud_2.png)
+
+# Concepts: 
+
+# Hands-On Experience
+
+## WHY ARE WE TYPING OUT EVERYTHING?...
+
+-   So you can make mitakes:
+    -   *"That was case sensitive?"*
+    -   *"I forgot a parenthesis/bracket?"*
+    -   *"That wasn't a period/comma/semi-colon?"*
+-   We learn better from mistakes
+-   We can help each other out here </br> </br>
+
+<center><b>Follow along with the <font color='#FF0000'>red</font> line numbers</b></center>
+
+##  
+
+<center>
+
+<h1>**Congratulations!!!**</h1>
+
+<img src="./usct_s3e3_files/img/congratulations.gif" width="55%"/> </br>You did the thing!
+
+</center>
+
+## Summary
+
+::: incremental
+- First thing
+- Second thing
+:::
+
+## Series Overview
+
+# Thank You!
+
+Questions?
+
+# Supplemental
+
+# The End
