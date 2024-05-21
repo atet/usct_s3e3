@@ -14,7 +14,7 @@ format:
 include-in-header:
   text: |
     <link rel = "shortcut icon" type="image/png" href = "./usct_s3e3_files/img/usct.png" />
-editor: visual
+editor: source
 ---
 
 # Introduction {visibility="hidden"}
