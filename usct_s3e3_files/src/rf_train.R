@@ -9,7 +9,7 @@
 
 # Must install this package in Posit Studio IDE and/or CLI
 cat("\n### 0. Loading packages...\n")
-if (!require("randomForest")) install.packages("randomForest")
+if(!require("randomForest")) install.packages("randomForest")
 library(randomForest) # randomForest version 4.7-1.1
 
 # Capture CLI arguments (i.e., path to truthed data)
