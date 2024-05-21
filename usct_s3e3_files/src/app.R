@@ -2,6 +2,8 @@ library(shiny)
 if(!require("reshape")) install.packages("reshape")
 library(reshape)
 
+# More info on hosting your own Shiny server: https://shiny.posit.co/r/deploy
+
 # Read in truthed data
 data = read.csv("https://raw.githubusercontent.com/atet/ml_maneuver/main/dat/turns.csv")
 

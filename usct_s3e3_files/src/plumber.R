@@ -4,6 +4,8 @@ library(randomForest) # randomForest version 4.7-1.1
 
 # Example of NOT_LEFT: "0,-0.01762569,54.85037,-0.0626019,109.7007,-1.306231,164.5511,1.019284,219.4015,-0.184418"
 # Example of LEFT:     "5.530219,0.5318008,40.17718,3.525679,71.90004,18.09912,90.27125,47.64923,97.61228,83.74682"
+#
+# More info on hosting your own Plumber server: https://www.rplumber.io/articles/hosting.html
 
 # Using model from earlier training hosted on GitHub
 rf_model = readRDS(gzcon(url("https://github.com/atet/usct_s3e3/raw/main/usct_s3e3_files/dat/rf_model.rds")))
