@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="usct_s3e3_files/libs/revealjs/dist/theme/quarto.css">
   <link href="usct_s3e3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -347,7 +412,7 @@
 <h2>Goals</h2>
 <ul>
 <li>High-level introduction to collaboration and scaling</li>
-<li>Ensure a good start on web-based environment</li>
+<li>Ensure a good start on web-based environments</li>
 <li>Answering your questions</li>
 </ul>
 </section>
@@ -355,7 +420,7 @@
 <h2>Goals</h2>
 <ul>
 <li>High-level introduction to collaboration and scaling</li>
-<li>Ensure a good start on web-based environment</li>
+<li>Ensure a good start on web-based environments</li>
 <li>Answering your questions</li>
 </ul>
 <p><br></p>
@@ -364,15 +429,15 @@ Prerequisites
 </h2>
 <ul>
 <li>No programming or R experience necessary</li>
-<li>Familiarity with spreadsheet software (e.g., Excel)</li>
-<li>Interest in automating decision-making processes</li>
+<li>Familiarity with DevOps and collaborative platforms</li>
+<li>Interest in sharing and scaling your customized solutions</li>
 </ul>
 </section>
 <section id="whoami" class="slide level2">
 <h2><code><font color="#586E75">whoami</font></code></h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p><img data-src="./usct_s3e3_files/img/.png"></p>
+<p><img data-src="./usct_s3e3_files/img/collaborate.png"></p>
 </div><div class="column" style="width:60%;">
 <ul>
 <li>“Atet”</li>
@@ -389,45 +454,22 @@ Prerequisites
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
-<p><font color="#C0C0C0">• <strong>S3E1</strong>: Introduction to leveraging machine learning<br> ‎ ‎ ‎ ‎ ▪ Relevant background &amp; Hands-on experience<br> ‎ ‎ ‎ ‎ ▪ 30,000 ft. view of a project<br> • <strong>S3E2</strong>: How to communicate your findings to stakeholders<br> ‎ ‎ ‎ ‎ ▪ Visualization concepts &amp; Hands-on experience<br> ‎ ‎ ‎ ‎ ▪ Visual Data Analysis</font><br> • <strong>S3E3</strong>: Collaborating on and scaling your efforts<br> ‎ ‎ ‎ ‎ ▪ Collaborative data science<br> ‎ ‎ ‎ ‎ ▪ Scripts and web-based applications<br> ‎ ‎ ‎ ‎ ▪ High-performance computing concepts<br></p>
+<p><font color="#C0C0C0">• <strong>S3E1</strong>: Introduction to leveraging machine learning<br> ‎ ‎ ‎ ‎ ▪ Relevant background &amp; Hands-on experience<br> ‎ ‎ ‎ ‎ ▪ 30,000 ft. view of a data science project<br> • <strong>S3E2</strong>: How to communicate your findings to stakeholders<br> ‎ ‎ ‎ ‎ ▪ Visualization concepts &amp; Hands-on experience<br> ‎ ‎ ‎ ‎ ▪ Visual Data Analysis</font><br> • <strong>S3E3</strong>: Collaborating on and scaling your efforts<br> ‎ ‎ ‎ ‎ ▪ Collaborative data science<br> ‎ ‎ ‎ ‎ ▪ Scripts and web-based applications<br> ‎ ‎ ‎ ‎ ▪ High-performance computing concepts<br> ‎ ‎ ‎ ‎ ▪ Extended Q&amp;A for workshop series<br></p>
 </section>
 <section id="recap-exploratory-data-analysis" class="slide level2">
-<h2>Recap: Exploratory Data Analysis</h2>
+<h2>RECAP: Exploratory Data Analysis</h2>
 
 <img data-src="./usct_s3e3_files/img/eda_2.png" class="r-stretch"></section>
 <section id="recap-exploratory-data-analysis-1" class="slide level2" data-visibility="uncounted">
-<h2>Recap: Exploratory Data Analysis</h2>
+<h2>RECAP: Exploratory Data Analysis</h2>
 
 <img data-src="./usct_s3e3_files/img/eda_3.png" class="r-stretch"></section>
 <section id="recap-data-visualization-methods" class="slide level2">
-<h2>Recap: Data Visualization Methods</h2>
+<h2>RECAP: Data Visualization Methods</h2>
 
 <img data-src="./usct_s3e3_files/img/format_and_workflow_3.png" class="r-stretch"></section>
 <section id="recap-development-environments" class="slide level2">
-<h2>Recap: Development Environments</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>RStudio Desktop</p>
-<p><img data-src="./usct_s3e3_files/img/tools_2.png"></p>
-</div><div class="column" style="width:40%;">
-
-</div>
-</div>
-</section>
-<section id="recap-development-environments-1" class="slide level2" data-visibility="uncounted">
-<h2>Recap: Development Environments</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>RStudio Desktop</p>
-<p><img data-src="./usct_s3e3_files/img/tools_2.png"></p>
-</div><div class="column" style="width:40%;">
-<p>Web-Based R “<em>Light</em>”</p>
-<p><img data-src="./usct_s3e3_files/img/web_r_6.gif"></p>
-</div>
-</div>
-</section>
-<section id="recap-development-environments-2" class="slide level2" data-visibility="uncounted">
-<h2>Recap: Development Environments</h2>
+<h2>RECAP: Development Environments</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>RStudio Desktop</p>
@@ -439,40 +481,167 @@ Prerequisites
 </div>
 <p><em>Too much to install right now…</em>‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ <em>No “local” features…</em></p>
 </section>
-<section id="posit-cloud-rstudio-desktop-in-the-cloud" class="slide level2">
-<h2>Posit Cloud = RStudio Desktop in the Cloud</h2>
+<section id="recap-posit-cloud-rstudio-desktop-in-the-cloud" class="slide level2">
+<h2>RECAP: Posit Cloud = RStudio Desktop in the Cloud</h2>
 
 <img data-src="./usct_s3e3_files/img/posit_cloud_1.png" class="r-stretch"></section>
-<section id="sign-up-at-httpsposit.cloudplansfree" class="slide level2">
-<h2>Sign Up At: <a href="https://posit.cloud/plans/free" target="_blank"><font color="#586E75">https://posit.cloud/plans/free</font></a></h2>
+<section id="recap-httpsposit.cloudplansfree" class="slide level2">
+<h2>RECAP: <a href="https://posit.cloud/plans/free" target="_blank"><font color="#586E75">https://posit.cloud/plans/free</font></a></h2>
 
-<img data-src="./usct_s3e3_files/img/posit_cloud_2.png" class="r-stretch"></section></section>
-<section id="concepts" class="title-slide slide level1 center">
-<h1>Concepts:</h1>
+<img data-src="./usct_s3e3_files/img/posit_cloud_2.png" class="r-stretch"></section>
+<section id="recap-httpsposit.cloudplansfree-1" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: <a href="https://posit.cloud/plans/free" target="_blank"><font color="#586E75">https://posit.cloud/plans/free</font></a></h2>
 
+<img data-src="./usct_s3e3_files/img/posit_cloud_3.png" class="r-stretch"></section>
+<section id="recap-hands-on-machine-learning" class="slide level2">
+<h2>RECAP: Hands-On Machine Learning</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="./usct_s3e3_files/img/posit_cloud_ml.png"></p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Read truthed training and testing data set from GitHub</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>truth_data <span class="ot">=</span> <span class="fu">read.csv</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="st">"https://raw.githubusercontent.com/atet/ml_maneuver/main/dat/turns.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">str</span>(truth_data) <span class="co"># Examine structure of the data</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">print</span>(<span class="st">"1. Data loaded."</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Convert numeric labels to factor data class</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>truth_data<span class="sc">$</span>label <span class="ot">=</span> <span class="fu">as.factor</span>(truth_data<span class="sc">$</span>label)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Split data to train and test sets</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>train <span class="ot">=</span> truth_data[truth_data<span class="sc">$</span>split <span class="sc">==</span> <span class="st">"train"</span>,]</span>
+<span id="cb1-11"><a href="#cb1-11"></a>test <span class="ot">=</span> truth_data[truth_data<span class="sc">$</span>split <span class="sc">==</span> <span class="st">"test"</span>,]</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="fu">print</span>(<span class="st">"2. Data prepped."</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># Train a Random Forest algorithm with training data</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"randomForest"</span>)){</span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="fu">install.packages</span>(<span class="st">"randomForest"</span>) <span class="co"># Install Random Forest package</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>}</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="fu">library</span>(randomForest) <span class="co"># Load Random Forest package</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>rf_model <span class="ot">=</span> <span class="fu">randomForest</span>(</span>
+<span id="cb1-20"><a href="#cb1-20"></a>  label <span class="sc">~</span> .,</span>
+<span id="cb1-21"><a href="#cb1-21"></a>  <span class="at">data =</span> train[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">14</span>)]</span>
+<span id="cb1-22"><a href="#cb1-22"></a>)</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="fu">print</span>(<span class="st">"3. Training complete."</span>)</span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># Use trained Random Forest model on hold-out test set</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>prediction <span class="ot">=</span> <span class="fu">predict</span>(</span>
+<span id="cb1-27"><a href="#cb1-27"></a>  rf_model, </span>
+<span id="cb1-28"><a href="#cb1-28"></a>  <span class="at">newdata =</span> test[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">14</span>)])</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="fu">print</span>(<span class="st">"4. Testing complete."</span>)</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co"># Confusion matrix shows if model is mispredicting classes</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>confusion_matrix <span class="ot">=</span> <span class="fu">table</span>(<span class="fu">unlist</span>(test[,<span class="dv">1</span>]), prediction)</span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="fu">print</span>(<span class="st">"5. Evaluating performance:"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="fu">print</span>(confusion_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
+<section id="recap-machine-learning-retrospective" class="slide level2">
+<h2>RECAP: Machine Learning Retrospective</h2>
 
+<img data-src="./usct_s3e3_files/img/retrospective_1.png" class="r-stretch"></section>
+<section id="recap-machine-learning-retrospective-1" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Machine Learning Retrospective</h2>
+
+<img data-src="./usct_s3e3_files/img/retrospective_2.png" class="r-stretch"></section>
+<section id="recap-machine-learning-retrospective-2" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Machine Learning Retrospective</h2>
+
+<img data-src="./usct_s3e3_files/img/retrospective_3.png" class="r-stretch"></section>
+<section id="recap-machine-learning-retrospective-3" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Machine Learning Retrospective</h2>
+
+<img data-src="./usct_s3e3_files/img/retrospective_4.png" class="r-stretch"></section>
+<section id="recap-machine-learning-retrospective-4" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Machine Learning Retrospective</h2>
+
+<img data-src="./usct_s3e3_files/img/retrospective_5.png" class="r-stretch"></section>
+<section id="recap-data-science-into-production" class="slide level2">
+<h2>RECAP: Data Science into Production</h2>
+
+<img data-src="./usct_s3e3_files/img/production_1.png" class="r-stretch"></section>
+<section id="recap-data-science-into-production-1" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Data Science into Production</h2>
+
+<img data-src="./usct_s3e3_files/img/production_2.png" class="r-stretch"></section>
+<section id="recap-data-science-into-production-2" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Data Science into Production</h2>
+
+<img data-src="./usct_s3e3_files/img/production_3.png" class="r-stretch"></section>
+<section id="recap-data-science-into-production-3" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Data Science into Production</h2>
+
+<img data-src="./usct_s3e3_files/img/production_4.png" class="r-stretch"></section>
+<section id="recap-data-science-into-production-4" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Data Science into Production</h2>
+
+<img data-src="./usct_s3e3_files/img/production_5.png" class="r-stretch"></section>
+<section id="recap-data-science-into-production-5" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Data Science into Production</h2>
+
+<img data-src="./usct_s3e3_files/img/production_6.png" class="r-stretch"></section>
+<section id="recap-data-science-into-production-6" class="slide level2" data-visibility="uncounted">
+<h2>RECAP: Data Science into Production</h2>
+
+<img data-src="./usct_s3e3_files/img/production_7.png" class="r-stretch"></section></section>
 <section>
-<section id="hands-on-experience" class="title-slide slide level1 center">
-<h1>Hands-On Experience</h1>
+<section id="collaborative-data-science" class="title-slide slide level1 center">
+<h1>Collaborative Data Science</h1>
+<p><em>How do I share my work with others?</em></p>
+</section>
+<section id="sharing-code" class="slide level2">
+<h2>Sharing Code…</h2>
 
+<img data-src="./usct_s3e3_files/img/collaboration_1.png" class="r-stretch"></section>
+<section id="best-practice-version-control-system" class="slide level2">
+<h2>Best Practice: Version Control System</h2>
+
+<img data-src="./usct_s3e3_files/img/vcs_1.png" class="r-stretch"></section>
+<section id="best-practice-version-control-system-1" class="slide level2" data-visibility="uncounted">
+<h2>Best Practice: Version Control System</h2>
+
+<img data-src="./usct_s3e3_files/img/vcs_2.png" class="r-stretch"></section>
+<section id="best-practice-version-control-system-2" class="slide level2" data-visibility="uncounted">
+<h2>Best Practice: Version Control System</h2>
+
+<img data-src="./usct_s3e3_files/img/vcs_3.png" class="r-stretch"></section>
+<section id="hands-on-model-building-script" class="slide level2">
+<h2>Hands-On Model Building Script</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="./usct_s3e3_files/img/posit_cloud_train.png"></p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>$ git clone https://github.com/atet/usct_s3e3.git</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>$ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_train.R "https://raw.githubusercontent.com/atet/ml_maneuver/main/dat/turns.csv"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="./usct_s3e3_files/img/posit_cloud_model.png"></p>
+</div>
+</div>
 </section>
-<section id="why-are-we-typing-out-everything" class="slide level2">
-<h2>WHY ARE WE TYPING OUT EVERYTHING?…</h2>
-<ul>
-<li>So you can make mitakes:
-<ul>
-<li><em>“That was case sensitive?”</em></li>
-<li><em>“I forgot a parenthesis/bracket?”</em></li>
-<li><em>“That wasn’t a period/comma/semi-colon?”</em></li>
-</ul></li>
-<li>We learn better from mistakes</li>
-<li>We can help each other out here <br> <br></li>
-</ul>
-<center>
-<b>Follow along with the <font color="#FF0000">red</font> line numbers</b>
-</center>
+<section id="hands-on-inference-script" class="slide level2">
+<h2>Hands-On Inference Script</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="./usct_s3e3_files/img/posit_cloud_inference.png"></p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a># This data represents a "NOT LEFT" class</span>
+<span id="cb3-2"><a href="#cb3-2"></a>$ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 0 -0.01762569 54.85037 -0.0626019 109.7007 -1.306231 164.5511 1.019284 219.4015 -0.184418</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a># This data represents a "LEFT" class</span>
+<span id="cb3-5"><a href="#cb3-5"></a>$ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 5.530219 0.5318008 40.17718 3.525679 71.90004 18.09912 90.27125 47.64923 97.61228 83.74682</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="./usct_s3e3_files/img/posit_cloud_visuals.png"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="collaborative-data-science-1" class="title-slide slide level1 center">
+<h1>Collaborative Data Science</h1>
+<p><em>How do other disciplines use my work?</em></p>
 </section>
+<section id="recap-what-is-a-data-scientist-a-collaborator" class="slide level2">
+<h2>RECAP: <em>What is a data scientist?</em>&nbsp;&nbsp;&nbsp;<u>A Collaborator!</u></h2>
+
+<img data-src="./usct_s3e3_files/img/data_scientist_5.png" class="r-stretch"></section>
 <section id="section" class="slide level2">
 <h2> </h2>
 <center>
@@ -508,7 +677,7 @@ Prerequisites
 <h1>The End</h1>
 <p><img src="./usct_s3e3_files/img/usct.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="http://www.athitkao.com/tos.html"><font color="#C0C0C0" size="2'">Copyright © 2024—∞ Athit Kao, Terms and Conditions<img src="./usct_s3e2_files/img/link_external_c0c0c0.png" style="display: inline-block; margin: 0; margin-bottom: -1px; height: 10px;"></font></a></p>
+<p><a href="http://www.athitkao.com/tos.html"><font color="#C0C0C0" size="2'">Copyright © 2024—∞ Athit Kao, Terms and Conditions<img src="./usct_s3e3_files/img/link_external_c0c0c0.png" style="display: inline-block; margin: 0; margin-bottom: -1px; height: 10px;"></font></a></p>
 </div>
 </section>
     </div>

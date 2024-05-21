@@ -2,6 +2,7 @@ library(shiny)
 if(!require("reshape")) install.packages("reshape")
 library(reshape)
 
+# Showcase of simple to advanced Shiny visualizations and dashboards: https://shiny.posit.co/r/gallery/
 # More info on hosting your own Shiny server: https://shiny.posit.co/r/deploy
 
 # Read in truthed data

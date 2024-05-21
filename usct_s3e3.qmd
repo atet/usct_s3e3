@@ -3,7 +3,7 @@ title: "Applying Data Science"
 subtitle: "<font size='7'>Season 3, Episode 3</font></br><font size='5'>May 21, 2024</font>"
 author: "<font size='6'>Athit Kao, PhD</font>"
 institute: "<font size='4'></font></br><font size='2'><em>DISCLAIMER: Opinions expressed within this presentation are solely the author's and do not reflect the opinions and beliefs of employer or its affiliates.</em></font></br><code><font size='4' color='#FF0000'>↙ Click ≡ for menu or use arrow keys (← & →) to navigate between slides</font></code>"
-footer: "[<font color='#C0C0C0' size=2'>Copyright © 2024—∞ Athit Kao, Terms and Conditions<img src='./usct_s3e2_files/img/link_external_c0c0c0.png' style='display: inline-block; margin: 0; margin-bottom: -1px; height: 10px;'/></img></font>](http://www.athitkao.com/tos.html)"
+footer: "[<font color='#C0C0C0' size=2'>Copyright © 2024—∞ Athit Kao, Terms and Conditions<img src='./usct_s3e3_files/img/link_external_c0c0c0.png' style='display: inline-block; margin: 0; margin-bottom: -1px; height: 10px;'/></img></font>](http://www.athitkao.com/tos.html)"
 format:
   revealjs:
     theme: solarized
@@ -22,13 +22,13 @@ editor: source
 ## Goals
 
 - High-level introduction to collaboration and scaling
-- Ensure a good start on web-based environment
+- Ensure a good start on web-based environments
 - Answering your questions
 
 ## Goals {visibility="uncounted"}
 
 - High-level introduction to collaboration and scaling
-- Ensure a good start on web-based environment
+- Ensure a good start on web-based environments
 - Answering your questions
 
 </br>
@@ -36,14 +36,14 @@ editor: source
 <h2>Prerequisites</h2>
 
 - No programming or R experience necessary
-- Familiarity with spreadsheet software (e.g., Excel)
-- Interest in automating decision-making processes
+- Familiarity with DevOps and collaborative platforms
+- Interest in sharing and scaling your customized solutions
 
 ## <code><font color='#586E75'>whoami</font></code>
 
 ::: columns
 ::: {.column width="40%"}
-![](./usct_s3e3_files/img/)
+![](./usct_s3e3_files/img/collaborate.png)
 :::
 
 ::: {.column width="60%"}
@@ -60,7 +60,7 @@ editor: source
 
 <font color='#C0C0C0'>• **S3E1**: Introduction to leveraging machine learning</br>
 ‎ ‎ ‎ ‎ ▪ Relevant background & Hands-on experience</br>
-‎ ‎ ‎ ‎ ▪ 30,000 ft. view of a project</br>
+‎ ‎ ‎ ‎ ▪ 30,000 ft. view of a data science project</br>
 • **S3E2**: How to communicate your findings to stakeholders</br>
 ‎ ‎ ‎ ‎ ▪ Visualization concepts & Hands-on experience</br>
 ‎ ‎ ‎ ‎ ▪ Visual Data Analysis</font></br>
@@ -68,49 +68,21 @@ editor: source
 ‎ ‎ ‎ ‎ ▪ Collaborative data science</br>
 ‎ ‎ ‎ ‎ ▪ Scripts and web-based applications</br>
 ‎ ‎ ‎ ‎ ▪ High-performance computing concepts</br>
+‎ ‎ ‎ ‎ ▪ Extended Q&A for workshop series</br>
 
-## Recap: Exploratory Data Analysis
+## RECAP: Exploratory Data Analysis
 
 ![](./usct_s3e3_files/img/eda_2.png)
 
-## Recap: Exploratory Data Analysis {visibility="uncounted"}
+## RECAP: Exploratory Data Analysis {visibility="uncounted"}
 
 ![](./usct_s3e3_files/img/eda_3.png)
 
-## Recap: Data Visualization Methods
+## RECAP: Data Visualization Methods
 
 ![](./usct_s3e3_files/img/format_and_workflow_3.png)
 
-## Recap: Development Environments
-
-::: columns
-::: {.column width="60%"}
-RStudio Desktop
-
-![](./usct_s3e3_files/img/tools_2.png)
-:::
-
-::: {.column width="40%"}
-:::
-:::
-
-## Recap: Development Environments{visibility="uncounted"}
-
-::: columns
-::: {.column width="60%"}
-RStudio Desktop
-
-![](./usct_s3e3_files/img/tools_2.png)
-:::
-
-::: {.column width="40%"}
-Web-Based R "*Light*"
-
-![](./usct_s3e3_files/img/web_r_6.gif)
-:::
-:::
-
-## Recap: Development Environments{visibility="uncounted"}
+## RECAP: Development Environments
 
 ::: columns
 ::: {.column width="60%"}
@@ -128,28 +100,181 @@ Web-Based R "*Light*"
 
 *Too much to install right now...*‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ *No "local" features...*
 
-## Posit Cloud = RStudio Desktop in the Cloud
+## RECAP: Posit Cloud = RStudio Desktop in the Cloud
 
 ![](./usct_s3e3_files/img/posit_cloud_1.png)
 
-## Sign Up At: <a href="https://posit.cloud/plans/free" target="_blank"><font color='#586E75'>https://posit.cloud/plans/free</font></a>
+## RECAP: <a href="https://posit.cloud/plans/free" target="_blank"><font color='#586E75'>https://posit.cloud/plans/free</font></a>
 
 ![](./usct_s3e3_files/img/posit_cloud_2.png)
 
-# Concepts: 
+## RECAP: <a href="https://posit.cloud/plans/free" target="_blank"><font color='#586E75'>https://posit.cloud/plans/free</font></a>{visibility="uncounted"}
 
-# Hands-On Experience
+![](./usct_s3e3_files/img/posit_cloud_3.png)
 
-## WHY ARE WE TYPING OUT EVERYTHING?...
+## RECAP: Hands-On Machine Learning
 
--   So you can make mitakes:
-    -   *"That was case sensitive?"*
-    -   *"I forgot a parenthesis/bracket?"*
-    -   *"That wasn't a period/comma/semi-colon?"*
--   We learn better from mistakes
--   We can help each other out here </br> </br>
+::: columns
+::: {.column width="50%"}
+![](./usct_s3e3_files/img/posit_cloud_ml.png)
+:::
 
-<center><b>Follow along with the <font color='#FF0000'>red</font> line numbers</b></center>
+::: {.column width="50%"}
+``` r
+# Read truthed training and testing data set from GitHub
+truth_data = read.csv(
+  "https://raw.githubusercontent.com/atet/ml_maneuver/main/dat/turns.csv")
+str(truth_data) # Examine structure of the data
+print("1. Data loaded.")
+
+# Convert numeric labels to factor data class
+truth_data$label = as.factor(truth_data$label)
+# Split data to train and test sets
+train = truth_data[truth_data$split == "train",]
+test = truth_data[truth_data$split == "test",]
+print("2. Data prepped.")
+
+# Train a Random Forest algorithm with training data
+if(!require("randomForest")){
+  install.packages("randomForest") # Install Random Forest package
+}
+library(randomForest) # Load Random Forest package
+rf_model = randomForest(
+  label ~ .,
+  data = train[,-c(2,3,14)]
+)
+print("3. Training complete.")
+
+# Use trained Random Forest model on hold-out test set
+prediction = predict(
+  rf_model, 
+  newdata = test[,-c(1,2,3,14)])
+print("4. Testing complete.")
+
+# Confusion matrix shows if model is mispredicting classes
+confusion_matrix = table(unlist(test[,1]), prediction)
+print("5. Evaluating performance:")
+print(confusion_matrix)
+```
+:::
+:::
+
+## RECAP: Machine Learning Retrospective
+
+![](./usct_s3e3_files/img/retrospective_1.png)
+
+## RECAP: Machine Learning Retrospective {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/retrospective_2.png)
+
+## RECAP: Machine Learning Retrospective {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/retrospective_3.png)
+
+## RECAP: Machine Learning Retrospective {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/retrospective_4.png)
+
+## RECAP: Machine Learning Retrospective {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/retrospective_5.png)
+
+## RECAP: Data Science into Production
+
+![](./usct_s3e3_files/img/production_1.png)
+
+## RECAP: Data Science into Production {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/production_2.png)
+
+## RECAP: Data Science into Production {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/production_3.png)
+
+## RECAP: Data Science into Production {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/production_4.png)
+
+## RECAP: Data Science into Production {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/production_5.png)
+
+## RECAP: Data Science into Production {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/production_6.png)
+
+## RECAP: Data Science into Production {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/production_7.png)
+
+# Collaborative Data Science
+
+*How do I share my work with others?*
+
+## Sharing Code...
+
+![](./usct_s3e3_files/img/collaboration_1.png)
+
+## Best Practice: Version Control System
+
+![](./usct_s3e3_files/img/vcs_1.png)
+
+## Best Practice: Version Control System {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/vcs_2.png)
+
+## Best Practice: Version Control System {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/vcs_3.png)
+
+## Hands-On Model Building Script
+
+::: columns
+::: {.column width="50%"}
+![](./usct_s3e3_files/img/posit_cloud_train.png)
+:::
+
+::: {.column width="50%"}
+``` console
+$ git clone https://github.com/atet/usct_s3e3.git
+
+$ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_train.R "https://raw.githubusercontent.com/atet/ml_maneuver/main/dat/turns.csv"
+```
+
+![](./usct_s3e3_files/img/posit_cloud_model.png)
+
+:::
+:::
+
+## Hands-On Inference Script
+
+::: columns
+::: {.column width="50%"}
+![](./usct_s3e3_files/img/posit_cloud_inference.png)
+:::
+
+::: {.column width="50%"}
+``` console
+# This data represents a "NOT LEFT" class
+$ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 0 -0.01762569 54.85037 -0.0626019 109.7007 -1.306231 164.5511 1.019284 219.4015 -0.184418
+
+# This data represents a "LEFT" class
+$ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 5.530219 0.5318008 40.17718 3.525679 71.90004 18.09912 90.27125 47.64923 97.61228 83.74682
+```
+
+![](./usct_s3e3_files/img/posit_cloud_visuals.png)
+
+:::
+:::
+
+# Collaborative Data Science
+
+*How do other disciplines use my work?*
+
+## RECAP: *What is a data scientist?*&nbsp;&nbsp;&nbsp;<u>A Collaborator!</u>
+
+![](./usct_s3e3_files/img/data_scientist_5.png)
+
 
 ##  
 
