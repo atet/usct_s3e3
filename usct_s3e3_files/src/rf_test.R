@@ -9,6 +9,9 @@
 #    # This data represents a "LEFT" class
 #    $ Rscript rf_test.R ./rf_model.rds 5.530219 0.5318008 40.17718 3.525679 71.90004 18.09912 90.27125 47.64923 97.61228 83.74682
 #
+#    # NOTE: You can also load the same rf_model.rds from the internet
+#    $ Rscript rf_test.R "https://github.com/atet/usct_s3e3/raw/main/usct_s3e3_files/dat/rf_model.rds" 5.530219 0.5318008 40.17718 3.525679 71.90004 18.09912 90.27125 47.64923 97.61228 83.74682
+#
 # This script will output a visualization in the same directory, "./<TIMESTAMP>_prediction.png"
 
 # Must install this package in Posit Studio IDE and/or CLI
@@ -20,7 +23,12 @@ library(randomForest) # randomForest version 4.7-1.1
 args = commandArgs(trailingOnly = TRUE)
 cat("### 1. Loading trained Random Forest model from: \"", args[1], "\"...\n", sep = "")
 # Read trained Random Forest model file (local or from internet)
-rf_model = readRDS(args[1])
+filepath = args[1]
+if(grepl("http",filepath)){
+  rf_model = readRDS(gzcon(url(filepath)))
+}else{
+  rf_model = readRDS(filepath)  
+}
 
 # Read ten features from unknown data
 unknown_data = data.frame(feature_1 = as.numeric(args[2]), feature_2 = as.numeric(args[3]), feature_3 = as.numeric(args[4]), feature_4 = as.numeric(args[5]), feature_5 = as.numeric(args[6]), feature_6 = as.numeric(args[7]), feature_7 = as.numeric(args[8]), feature_8 = as.numeric(args[9]), feature_9 = as.numeric(args[10]), feature_10 = as.numeric(args[11]), stringsAsFactors = FALSE)
