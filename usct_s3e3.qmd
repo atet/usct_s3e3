@@ -275,7 +275,7 @@ $ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 5.530219 0.53
 
 ![](./usct_s3e3_files/img/data_scientist_5.png)
 
-## Hands-On Shiny Web App
+## Hands-On R Web App
 
 ::: rows
 ::: {.row height="50%"}
@@ -289,7 +289,7 @@ $ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 5.530219 0.53
 :::
 :::
 
-## Hands-On Shiny Web App {visibility="uncounted"}
+## Hands-On R Web App {visibility="uncounted"}
 
 ::: rows
 ::: {.row height="50%"}
@@ -302,6 +302,57 @@ $ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 5.530219 0.53
 ![](./usct_s3e3_files/img/shiny_2.png)
 :::
 :::
+
+## Hands-On R API
+
+::: rows
+::: {.row height="50%"}
+``` console
+> plumb(file='usct_s3e3/usct_s3e3_files/src/plumber.R')$run()
+```
+:::
+
+::: {.row height="50%"}
+![](./usct_s3e3_files/img/plumber_1.png)
+:::
+:::
+
+## Hands-On R API {visibility="uncounted"}
+
+::: rows
+::: {.row height="50%"}
+``` console
+> plumb(file='usct_s3e3/usct_s3e3_files/src/plumber.R')$run()
+```
+:::
+
+::: {.row height="50%"}
+![](./usct_s3e3_files/img/plumber_2.png)
+:::
+:::
+
+## Hands-On R API {visibility="uncounted"}
+
+::: columns
+::: {.column width="70%"}
+![](./usct_s3e3_files/img/plumber_3.png)
+:::
+
+::: {.column width="30%"}
+``` console
+# Example of NOT_LEFT: "0,-0.01762569,54.85037,-0.0626019,109.7007,-1.306231,164.5511,1.019284,219.4015,-0.184418"
+# Example of LEFT:     "5.530219,0.5318008,40.17718,3.525679,71.90004,18.09912,90.27125,47.64923,97.61228,83.74682"
+```
+:::
+:::
+
+## Overview of Hosting Apps & APIs on a Network
+
+![](./usct_s3e3_files/img/hosting_1.png)
+
+## Overview of Hosting Apps & APIs on a Network {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/hosting_2.png)
 
 ##  
 
