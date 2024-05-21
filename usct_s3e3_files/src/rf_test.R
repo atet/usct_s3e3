@@ -1,5 +1,16 @@
 #!/usr/bin/env Rscript
 
+# INSTRUCTIONS
+# To use the trained Random Forest model on unknown data in CLI, run the following on Posit Cloud in the same directory:
+#
+#    # This data represents a "NOT LEFT" class
+#    $ Rscript rf_test.R ./rf_model.rds 0 -0.01762569 54.85037 -0.0626019 109.7007 -1.306231 164.5511 1.019284 219.4015 -0.184418
+#
+#    # This data represents a "LEFT" class
+#    $ Rscript rf_test.R ./rf_model.rds 5.530219 0.5318008 40.17718 3.525679 71.90004 18.09912 90.27125 47.64923 97.61228 83.74682
+#
+# This script will output a visualization in the same directory, "./<TIMESTAMP>_prediction.png"
+
 # Must install this package in Posit Studio IDE and/or CLI
 cat("\n### 0. Loading packages...\n")
 if (!require("randomForest")) install.packages("randomForest")
@@ -7,7 +18,7 @@ library(randomForest) # randomForest version 4.7-1.1
 
 # Capture CLI arguments (i.e., Random Forest model and features from unknown data)
 args = commandArgs(trailingOnly = TRUE)
-cat("### 1. Loading trained Random Forest model from: ", args[1], "...\n", sep = "")
+cat("### 1. Loading trained Random Forest model from: \"", args[1], "\"...\n", sep = "")
 # Read trained Random Forest model file (local or from internet)
 rf_model = readRDS(args[1])
 
@@ -35,7 +46,7 @@ plot_data = data.frame(
 timestamp = Sys.time()
 title = paste(Sys.time(), "\nRandom Forest Prediction = ", prediction, sep = "")
 filename = paste(gsub(" ","_",timestamp), "_prediction.png", sep = "")
-cat("### 6. Saving visualization to: '", filename,"'...\n", sep = "")
+cat("### 6. Saving visualization to: \"", filename,"\"...\n", sep = "")
 png(filename, width = 256, height = 256, res = 48)
 plot(plot_data$x, plot_data$y, type = "b", xlim = c(0,255), ylim = c(-5,145), xlab = "Feet", ylab = "Feet", main = title)
 null = dev.off()

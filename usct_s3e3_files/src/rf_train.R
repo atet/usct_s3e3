@@ -1,5 +1,12 @@
 #!/usr/bin/env Rscript
 
+# INSTRUCTIONS
+# To train the Random Forest model in CLI, run the following on Posit Cloud in the same directory:
+#
+#    $ Rscript rf_train.R "https://raw.githubusercontent.com/atet/ml_maneuver/main/dat/turns.csv"
+#
+# This script will output a trained Random Forest model in the same directory, "./rf_model.rds"
+
 # Must install this package in Posit Studio IDE and/or CLI
 cat("\n### 0. Loading packages...\n")
 if (!require("randomForest")) install.packages("randomForest")
@@ -7,7 +14,7 @@ library(randomForest) # randomForest version 4.7-1.1
 
 # Capture CLI arguments (i.e., path to truthed data)
 args = commandArgs(trailingOnly = TRUE)
-cat("### 1. Reading truthed data from: ", args[1], "...\n", sep = "")
+cat("### 1. Reading truthed data from: \"", args[1], "\"...\n", sep = "")
 # Read truthed data *.csv file (local or from internet)
 truth_data = read.csv(args[1])
 
@@ -38,7 +45,7 @@ spec = (confusion_matrix[1,1] / (confusion_matrix[1,1] + confusion_matrix[2,1]))
 cat("###### Specificity (a.k.a., True Negative Rate) = ", spec, "%\n", sep = "")
 
 # Saving trained Random Forest model to disk
-cat("### 6. Saving trained Random Forest Model as './rf_model.rds'...\n")
+cat("### 6. Saving trained Random Forest Model as \"./rf_model.rds\"...\n")
 saveRDS(rf_model, "./rf_model.rds")
 
 cat("### 7. Random Forest Model creation complete!\n\n")
