@@ -269,12 +269,39 @@ $ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 5.530219 0.53
 
 # Collaborative Data Science
 
-*How do other disciplines use my work?*
+*How can other disciplines use my work?*
 
 ## RECAP: *What is a data scientist?*&nbsp;&nbsp;&nbsp;<u>A Collaborator!</u>
 
 ![](./usct_s3e3_files/img/data_scientist_5.png)
 
+## Hands-On Shiny Web App
+
+::: rows
+::: {.row height="50%"}
+``` console
+> runApp('usct_s3e3/usct_s3e3_files/src/app.R')
+```
+:::
+
+::: {.row height="50%"}
+![](./usct_s3e3_files/img/shiny_1.png)
+:::
+:::
+
+## Hands-On Shiny Web App {visibility="uncounted"}
+
+::: rows
+::: {.row height="50%"}
+``` console
+> runApp('usct_s3e3/usct_s3e3_files/src/app.R')
+```
+:::
+
+::: {.row height="50%"}
+![](./usct_s3e3_files/img/shiny_2.png)
+:::
+:::
 
 ##  
 
