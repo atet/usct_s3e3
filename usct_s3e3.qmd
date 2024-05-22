@@ -354,24 +354,174 @@ $ Rscript ./usct_s3e3/usct_s3e3_files/src/rf_test.R ./rf_model.rds 5.530219 0.53
 
 ![](./usct_s3e3_files/img/hosting_2.png)
 
+# Scaling Data Science
+
+*How do I get more compute power beyond my laptop/desktop?*
+
+## Split-Apply-Combine Strategy: Single-threaded
+
+![](./usct_s3e3_files/img/sac_1.png)
+
+## Split-Apply-Combine Strategy: Multi-threaded
+
+![](./usct_s3e3_files/img/sac_2.png)
+
+## Split-Apply-Combine Strategy: Multi-threaded {visibility="uncounted"}
+
+::: columns
+::: {.column width="70%"}
+``` r
+library(parallel)
+parallel::detectCores() # Very generous for free account, Posit Cloud <3
+
+sleep = function(seconds){
+  cat("Sleeping for", seconds, "second(s)...\n")
+  for(x in seconds:1){
+    cat(x,"...\n", sep = "")
+    Sys.sleep(1)
+  }
+  cat("Waking up!\n")
+  return(seconds)
+}
+
+sleep(1)
+sleep(2)
+sleep(3)
+
+system.time({
+  sleep(4)
+}) # ~4 seconds
+
+# Singlethreaded sequential execution
+system.time({
+  single = lapply(1:4, sleep)
+}) # ~10 seconds
+
+# Multithreading in R for Linux (Posit Cloud is hosted on Linux)
+system.time({
+  multi = mclapply(1:4, sleep, mc.cores = 4)
+}) # ~4 seconds!
+
+identical(single, multi) # TRUE, identical results
+
+###
+
+# Multithreading in R for Windows (also works in Linux)
+cluster = makePSOCKcluster(c(rep("localhost", 4)))
+system.time({
+  multi_windows = parLapplyLB(cluster, 1:4, sleep)
+}) # ~4 seconds!
+
+identical(multi, multi_windows) # TRUE, identical results
+
+```
+
+:::
+
+::: {.column width="30%"}
+:::
+:::
+
+## Split-Apply-Combine Strategy: Multi-threaded {visibility="uncounted"}
+
+::: columns
+::: {.column width="70%"}
+``` r
+library(parallel)
+parallel::detectCores() # Very generous for free account, Posit Cloud <3
+
+sleep = function(seconds){
+  cat("Sleeping for", seconds, "second(s)...\n")
+  for(x in seconds:1){
+    cat(x,"...\n", sep = "")
+    Sys.sleep(1)
+  }
+  cat("Waking up!\n")
+  return(seconds)
+}
+
+sleep(1)
+sleep(2)
+sleep(3)
+
+system.time({
+  sleep(4)
+}) # ~4 seconds
+
+# Singlethreaded sequential execution
+system.time({
+  single = lapply(1:4, sleep)
+}) # ~10 seconds
+
+# Multithreading in R for Linux (Posit Cloud is hosted on Linux)
+system.time({
+  multi = mclapply(1:4, sleep, mc.cores = 4)
+}) # ~4 seconds!
+
+identical(single, multi) # TRUE, identical results
+
+###
+
+# Multithreading in R for Windows (also works in Linux)
+cluster = makePSOCKcluster(c(rep("localhost", 4)))
+system.time({
+  multi_windows = parLapplyLB(cluster, 1:4, sleep)
+}) # ~4 seconds!
+
+identical(multi, multi_windows) # TRUE, identical results
+
+```
+
+:::
+
+::: {.column width="30%"}
+![](./usct_s3e3_files/img/sac_3.png)
+:::
+:::
+
+## High-Performance Computing
+
+![](./usct_s3e3_files/img/hpc_1.png)
+
+## High-Performance Computing {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/hpc_2.png)
+
+## High-Performance Computing {visibility="uncounted"}
+
+![](./usct_s3e3_files/img/hpc_3.png)
+
 ##  
 
 <center>
 
 <h1>**Congratulations!!!**</h1>
 
-<img src="./usct_s3e3_files/img/congratulations.gif" width="55%"/> </br>You did the thing!
+<img src="./usct_s3e3_files/img/congratulations.gif" width="55%"/> </br>You got through the Season 3 Data Science Series!
 
 </center>
 
 ## Summary
 
 ::: incremental
-- First thing
-- Second thing
+- Data Science is an interdisciplinary field
+
+- Best practices like versioning and accessibility are critical
+
+- HPCC to spend less time waiting and more time doing
 :::
 
 ## Series Overview
+
+• **S3E1**: Introduction to leveraging machine learning</br>
+‎ ‎ ‎ ‎ ▪ Relevant background & Hands-on experience</br>
+‎ ‎ ‎ ‎ ▪ 30,000 ft. view of a data science project</br></br>
+• **S3E2**: How to communicate your findings to stakeholders</br>
+‎ ‎ ‎ ‎ ▪ Visualization concepts & Hands-on experience</br>
+‎ ‎ ‎ ‎ ▪ Visual Data Analysis</br></br>
+• **S3E3**: Collaborating on and scaling your efforts</br>
+‎ ‎ ‎ ‎ ▪ Collaborative data science: VCS and applications</br>
+‎ ‎ ‎ ‎ ▪ High-performance computing concepts</br>
 
 # Thank You!
 

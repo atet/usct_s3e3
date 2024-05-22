@@ -704,27 +704,156 @@ Prerequisites
 <section id="overview-of-hosting-apps-apis-on-a-network-1" class="slide level2" data-visibility="uncounted">
 <h2>Overview of Hosting Apps &amp; APIs on a Network</h2>
 
-<img data-src="./usct_s3e3_files/img/hosting_2.png" class="r-stretch"></section>
+<img data-src="./usct_s3e3_files/img/hosting_2.png" class="r-stretch"></section></section>
+<section>
+<section id="scaling-data-science" class="title-slide slide level1 center">
+<h1>Scaling Data Science</h1>
+<p><em>How do I get more compute power beyond my laptop/desktop?</em></p>
+</section>
+<section id="split-apply-combine-strategy-single-threaded" class="slide level2">
+<h2>Split-Apply-Combine Strategy: Single-threaded</h2>
+
+<img data-src="./usct_s3e3_files/img/sac_1.png" class="r-stretch"></section>
+<section id="split-apply-combine-strategy-multi-threaded" class="slide level2">
+<h2>Split-Apply-Combine Strategy: Multi-threaded</h2>
+
+<img data-src="./usct_s3e3_files/img/sac_2.png" class="r-stretch"></section>
+<section id="split-apply-combine-strategy-multi-threaded-1" class="slide level2" data-visibility="uncounted">
+<h2>Split-Apply-Combine Strategy: Multi-threaded</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>parallel<span class="sc">::</span><span class="fu">detectCores</span>() <span class="co"># Very generous for free account, Posit Cloud &lt;3</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>sleep <span class="ot">=</span> <span class="cf">function</span>(seconds){</span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">cat</span>(<span class="st">"Sleeping for"</span>, seconds, <span class="st">"second(s)...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="cf">for</span>(x <span class="cf">in</span> seconds<span class="sc">:</span><span class="dv">1</span>){</span>
+<span id="cb9-7"><a href="#cb9-7"></a>    <span class="fu">cat</span>(x,<span class="st">"...</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb9-8"><a href="#cb9-8"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb9-9"><a href="#cb9-9"></a>  }</span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">cat</span>(<span class="st">"Waking up!</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">return</span>(seconds)</span>
+<span id="cb9-12"><a href="#cb9-12"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="fu">sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="fu">sleep</span>(<span class="dv">2</span>)</span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="fu">sleep</span>(<span class="dv">3</span>)</span>
+<span id="cb9-17"><a href="#cb9-17"></a></span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="fu">system.time</span>({</span>
+<span id="cb9-19"><a href="#cb9-19"></a>  <span class="fu">sleep</span>(<span class="dv">4</span>)</span>
+<span id="cb9-20"><a href="#cb9-20"></a>}) <span class="co"># ~4 seconds</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a></span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="co"># Singlethreaded sequential execution</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="fu">system.time</span>({</span>
+<span id="cb9-24"><a href="#cb9-24"></a>  single <span class="ot">=</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, sleep)</span>
+<span id="cb9-25"><a href="#cb9-25"></a>}) <span class="co"># ~10 seconds</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a></span>
+<span id="cb9-27"><a href="#cb9-27"></a><span class="co"># Multithreading in R for Linux (Posit Cloud is hosted on Linux)</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a><span class="fu">system.time</span>({</span>
+<span id="cb9-29"><a href="#cb9-29"></a>  multi <span class="ot">=</span> <span class="fu">mclapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, sleep, <span class="at">mc.cores =</span> <span class="dv">4</span>)</span>
+<span id="cb9-30"><a href="#cb9-30"></a>}) <span class="co"># ~4 seconds!</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="fu">identical</span>(single, multi) <span class="co"># TRUE, identical results</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="do">###</span></span>
+<span id="cb9-35"><a href="#cb9-35"></a></span>
+<span id="cb9-36"><a href="#cb9-36"></a><span class="co"># Multithreading in R for Windows (also works in Linux)</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a>cluster <span class="ot">=</span> <span class="fu">makePSOCKcluster</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"localhost"</span>, <span class="dv">4</span>)))</span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="fu">system.time</span>({</span>
+<span id="cb9-39"><a href="#cb9-39"></a>  multi_windows <span class="ot">=</span> <span class="fu">parLapplyLB</span>(cluster, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, sleep)</span>
+<span id="cb9-40"><a href="#cb9-40"></a>}) <span class="co"># ~4 seconds!</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a></span>
+<span id="cb9-42"><a href="#cb9-42"></a><span class="fu">identical</span>(multi, multi_windows) <span class="co"># TRUE, identical results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:30%;">
+
+</div>
+</div>
+</section>
+<section id="split-apply-combine-strategy-multi-threaded-2" class="slide level2" data-visibility="uncounted">
+<h2>Split-Apply-Combine Strategy: Multi-threaded</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>parallel<span class="sc">::</span><span class="fu">detectCores</span>() <span class="co"># Very generous for free account, Posit Cloud &lt;3</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>sleep <span class="ot">=</span> <span class="cf">function</span>(seconds){</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">cat</span>(<span class="st">"Sleeping for"</span>, seconds, <span class="st">"second(s)...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="cf">for</span>(x <span class="cf">in</span> seconds<span class="sc">:</span><span class="dv">1</span>){</span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="fu">cat</span>(x,<span class="st">"...</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb10-9"><a href="#cb10-9"></a>  }</span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">cat</span>(<span class="st">"Waking up!</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a>  <span class="fu">return</span>(seconds)</span>
+<span id="cb10-12"><a href="#cb10-12"></a>}</span>
+<span id="cb10-13"><a href="#cb10-13"></a></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="fu">sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="fu">sleep</span>(<span class="dv">2</span>)</span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="fu">sleep</span>(<span class="dv">3</span>)</span>
+<span id="cb10-17"><a href="#cb10-17"></a></span>
+<span id="cb10-18"><a href="#cb10-18"></a><span class="fu">system.time</span>({</span>
+<span id="cb10-19"><a href="#cb10-19"></a>  <span class="fu">sleep</span>(<span class="dv">4</span>)</span>
+<span id="cb10-20"><a href="#cb10-20"></a>}) <span class="co"># ~4 seconds</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a></span>
+<span id="cb10-22"><a href="#cb10-22"></a><span class="co"># Singlethreaded sequential execution</span></span>
+<span id="cb10-23"><a href="#cb10-23"></a><span class="fu">system.time</span>({</span>
+<span id="cb10-24"><a href="#cb10-24"></a>  single <span class="ot">=</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, sleep)</span>
+<span id="cb10-25"><a href="#cb10-25"></a>}) <span class="co"># ~10 seconds</span></span>
+<span id="cb10-26"><a href="#cb10-26"></a></span>
+<span id="cb10-27"><a href="#cb10-27"></a><span class="co"># Multithreading in R for Linux (Posit Cloud is hosted on Linux)</span></span>
+<span id="cb10-28"><a href="#cb10-28"></a><span class="fu">system.time</span>({</span>
+<span id="cb10-29"><a href="#cb10-29"></a>  multi <span class="ot">=</span> <span class="fu">mclapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, sleep, <span class="at">mc.cores =</span> <span class="dv">4</span>)</span>
+<span id="cb10-30"><a href="#cb10-30"></a>}) <span class="co"># ~4 seconds!</span></span>
+<span id="cb10-31"><a href="#cb10-31"></a></span>
+<span id="cb10-32"><a href="#cb10-32"></a><span class="fu">identical</span>(single, multi) <span class="co"># TRUE, identical results</span></span>
+<span id="cb10-33"><a href="#cb10-33"></a></span>
+<span id="cb10-34"><a href="#cb10-34"></a><span class="do">###</span></span>
+<span id="cb10-35"><a href="#cb10-35"></a></span>
+<span id="cb10-36"><a href="#cb10-36"></a><span class="co"># Multithreading in R for Windows (also works in Linux)</span></span>
+<span id="cb10-37"><a href="#cb10-37"></a>cluster <span class="ot">=</span> <span class="fu">makePSOCKcluster</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"localhost"</span>, <span class="dv">4</span>)))</span>
+<span id="cb10-38"><a href="#cb10-38"></a><span class="fu">system.time</span>({</span>
+<span id="cb10-39"><a href="#cb10-39"></a>  multi_windows <span class="ot">=</span> <span class="fu">parLapplyLB</span>(cluster, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, sleep)</span>
+<span id="cb10-40"><a href="#cb10-40"></a>}) <span class="co"># ~4 seconds!</span></span>
+<span id="cb10-41"><a href="#cb10-41"></a></span>
+<span id="cb10-42"><a href="#cb10-42"></a><span class="fu">identical</span>(multi, multi_windows) <span class="co"># TRUE, identical results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:30%;">
+<p><img data-src="./usct_s3e3_files/img/sac_3.png"></p>
+</div>
+</div>
+</section>
+<section id="high-performance-computing" class="slide level2">
+<h2>High-Performance Computing</h2>
+
+<img data-src="./usct_s3e3_files/img/hpc_1.png" class="r-stretch"></section>
+<section id="high-performance-computing-1" class="slide level2" data-visibility="uncounted">
+<h2>High-Performance Computing</h2>
+
+<img data-src="./usct_s3e3_files/img/hpc_2.png" class="r-stretch"></section>
+<section id="high-performance-computing-2" class="slide level2" data-visibility="uncounted">
+<h2>High-Performance Computing</h2>
+
+<img data-src="./usct_s3e3_files/img/hpc_3.png" class="r-stretch"></section>
 <section id="section" class="slide level2">
 <h2> </h2>
 <center>
 <h1>
 <strong>Congratulations!!!</strong>
 </h1>
-<p><img src="./usct_s3e3_files/img/congratulations.gif" width="55%"> <br>You did the thing!</p>
+<p><img src="./usct_s3e3_files/img/congratulations.gif" width="55%"> <br>You got through the Season 3 Data Science Series!</p>
 </center>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <div>
 <ul>
-<li class="fragment">First thing</li>
-<li class="fragment">Second thing</li>
+<li class="fragment"><p>Data Science is an interdisciplinary field</p></li>
+<li class="fragment"><p>Best practices like versioning and accessibility are critical</p></li>
+<li class="fragment"><p>HPCC to spend less time waiting and more time doing</p></li>
 </ul>
 </div>
 </section>
 <section id="series-overview" class="slide level2">
 <h2>Series Overview</h2>
+<p>• <strong>S3E1</strong>: Introduction to leveraging machine learning<br> ‎ ‎ ‎ ‎ ▪ Relevant background &amp; Hands-on experience<br> ‎ ‎ ‎ ‎ ▪ 30,000 ft. view of a data science project<br><br> • <strong>S3E2</strong>: How to communicate your findings to stakeholders<br> ‎ ‎ ‎ ‎ ▪ Visualization concepts &amp; Hands-on experience<br> ‎ ‎ ‎ ‎ ▪ Visual Data Analysis<br><br> • <strong>S3E3</strong>: Collaborating on and scaling your efforts<br> ‎ ‎ ‎ ‎ ▪ Collaborative data science: VCS and applications<br> ‎ ‎ ‎ ‎ ▪ High-performance computing concepts<br></p>
 </section></section>
 <section id="thank-you" class="title-slide slide level1 center">
 <h1>Thank You!</h1>
